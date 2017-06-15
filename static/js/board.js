@@ -21,6 +21,14 @@
                     });
             };
 
+            $scope.login = function(){
+                $http.post('/auth_api/login/',
+                    {
+                        username: 'admin',
+                        password: 'testing123'
+                    });
+            };
+
             $scope.data = [];
             $http.get('/board/lists/').then(function(response){
                 $scope.data = response.data;
