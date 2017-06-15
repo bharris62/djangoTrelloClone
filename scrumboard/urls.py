@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='board/home.html')),
     url(r'^board/', include('board.urls')),
+    url(r'^auth_api/', include('auth_api.urls')),
 ]
