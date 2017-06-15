@@ -10,13 +10,19 @@
         function BoardController($scope, $http){
             $scope.add = function(list, title){
                 var card = {
+                    list: list.id,
                     title: title
                 };
-                list.cards.push(card)
+                $http.post('/board/cards/', card)
+                    .then(function(response){
+                        list.cards.push(response.data);
+                    }, function(){
+                        alert("could not create card");
+                    });
             };
 
             $scope.data = [];
-            $http.get('/board/lists').then(function(response){
+            $http.get('/board/lists/').then(function(response){
                 $scope.data = response.data;
 
             });
